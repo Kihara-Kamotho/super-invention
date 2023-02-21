@@ -5,3 +5,18 @@
   <%= link_to 'Sign up', new_user_registration_path, class: 'btn btn-primary btn-lg' %>
   <%= link_to 'Log in', new_user_session_path, class: 'btn btn-outline-primary btn-lg' %>
 <% end %>
+
+<%# tweet creation form %>
+<%= form_with(model: Tweet.new, url: tweets_path) do |f| %>
+  <%= f.text_field :body %>
+  <%= f.submit %>
+<% end %>
+
+<%# tweets collection %>
+<% Tweet.find_each do |tweet| %>
+  <ul>
+    <li>
+      <%= tweet.body %>
+    </li>
+  </ul>
+<% end %>
